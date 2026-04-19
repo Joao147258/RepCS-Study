@@ -1,33 +1,24 @@
-﻿public class Livros
+using System;
+
+public class Livro
 {
-    public string _Titulo { get; private set; } // get -> ler | set -> escrever
-    public string _Autor { get; private set; }
-    public int _NumPg { get; private set; }
+    public string Titulo { get; private set; } 
+    public string Autor { get; private set; }
+    public int NumPg { get; private set; }
 
-    public Livros (string titulo, string autor, int numpg)
+    public Livro(string titulo, string autor, int numpg)
     {
-        if (string.IsNullOrWhiteSpace(titulo))
-        {
-            throw new ArgumentException("o titulo não pode ser nulo");
-        }
-        if (string.IsNullOrWhiteSpace(autor))
-        {
-            throw new ArgumentException("Autor não pode ser nulo");
-        }
-        if (numpg <= 0)
-        {
-            throw new ArgumentException("Informe um valor de páginas valido");
-        }
+        if (string.IsNullOrWhiteSpace(titulo)) throw new ArgumentException("O título não pode ser nulo");
+        if (string.IsNullOrWhiteSpace(autor)) throw new ArgumentException("O autor não pode ser nulo");
+        if (numpg <= 0) throw new ArgumentException("Páginas devem ser maior que zero");
 
-        _Titulo = titulo;
-        _Autor = autor;
-        _NumPg = numpg;
-
-
+        Titulo = titulo;
+        Autor = autor;
+        NumPg = numpg;
     }
 
     public string MostraInfo()
     {
-        return $"Titulo: {_Titulo} | Autor: {_Autor} | Numero de paginas: {_NumPg}";
+        return $"📖 {Titulo} | Autor: {Autor} | Páginas: {NumPg}";
     }
 }
