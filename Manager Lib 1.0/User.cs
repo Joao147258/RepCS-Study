@@ -1,20 +1,18 @@
-﻿public class PermicaoCad
+using System;
+
+public class PermissaoCad
 {
-    public string _Nome { private set; get; }
-    public string _Chave { private set; get; }
+    public string Nome { get; private set; }
+    public string Chave { get; private set; }
 
-    // Definindo o comportamento 
-
-    public PermicaoCad(string nome, string chave)
+    public PermissaoCad(string nome, string chave)
     {
         if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(chave))
         {
-            throw new ArgumentException("Dados Invalidos");
+            throw new ArgumentException("Nome e Chave são obrigatórios.");
         }
 
-        _Chave = chave;
-        _Nome = nome;
-
+        Nome = nome;
+        Chave = chave;
     }
 }
-
