@@ -1,23 +1,27 @@
-﻿public class Program
+using System;
+
+public class Program
 {
-    
     public static void Main()
     {
-        Livros lista = new Livros("xxx", "xxx", 453);
+        // 1. Ligamos o sistema da Biblioteca
+        Biblioteca minhaBiblioteca = new Biblioteca();
 
         try
         {
-            // Tentativa Valida
-            PermicaoCad permicao = new PermicaoCad("Marta", "xcv3s");
-            Console.WriteLine(lista.MostraInfo());
+            // 2. Criamos as credenciais
+            PermissaoCad usuarioValido = new PermissaoCad("Marta", "admin123");
+            PermissaoCad usuarioInvalido = new PermissaoCad("João", "senhaErrada");
 
-            // invalida
-            PermicaoCad permic2 = new PermicaoCad("", "ww");
+            // 3. Testamos o método
+            minhaBiblioteca.MostrarCatalogo(usuarioInvalido); // Vai dar acesso negado
+            
+            minhaBiblioteca.MostrarCatalogo(usuarioValido);   // Vai mostrar os livros
 
         }
         catch (ArgumentException arg)
         {
-            Console.WriteLine($"Erro: {arg.Message}");
+            Console.WriteLine($"Erro na formatação dos dados: {arg.Message}");
         }
     }
 }
